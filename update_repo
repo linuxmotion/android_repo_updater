@@ -43,7 +43,7 @@ git checkout origin/gingerbread
 git checkout -b updates
 
 git checkout toupdate
-DIR=`pwd`
+
 
 
 echo 'We are about to rebase please press enter to begin'
@@ -53,9 +53,10 @@ read IN
 git rebase -i -m -s=ours updates
 
 echo 'Here are two terminals, one to continue the rebasing one to start the meld editor after the rebase has started'
+DIR=`pwd`
 echo $DIR
 gnome-terminal --working-directory=$DIR
-gnome-terminal --working-directory=$DIR -e "git mergetool --tool=meld"
+gnome-terminal --working-directory=$DIR 
 
 
 echo 'Please press enter when you are done rebasing'
