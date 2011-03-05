@@ -1,0 +1,61 @@
+#!/bin/bash
+
+
+
+
+AREPO[0]=git://android.git.kernel.org/platform/dalvik.git
+AREPO[1]=git://android.git.kernel.org/platform/bionic.git
+
+GREPO[0]=git@github.com:OMFGB/android_dalvik.git
+GREPO[1]=git@github.com:OMFGB/android_bionic.git
+
+
+
+echo 'Press to begin the process'
+read IN
+
+# the number to loop to
+for I in {0..1}
+do
+echo 'cloning'
+git clone ${AREPO[$I]} tmp$I
+cd tmp$I
+echo 'Adding remotes '${GREPO[$I]}
+git remote add github ${GREPO[$I]} 
+git remote -v
+
+echo 'fetching remotes'
+git fetch origin gingerbread
+git fetch github
+
+echo 'Creating local branches from github'
+git checkout github/master 
+git checkout -b toupdate 
+
+echo 'Creating local branches from android.kernel.git or whatever it is'
+git checkout origin/gingerbread 
+git checkout -b updates
+
+git checkout toupdate
+DIR=`pwd`
+
+
+echo 'We are about to rebase please press enter to begin'
+read IN
+
+
+git rebase -i -m -s=ours updates
+
+echo 'Here are two terminals, one to continue the rebasing one to start the meld editor after the rebase has started'
+echo $DIR
+gnome-terminal --working-directory=$DIR
+gnome-terminal --working-directory=$DIR -e "git mergetool --tool=meld"
+exit
+exit
+
+
+echo 'Please press enter when you are done rebasing'
+read IN
+cd ..
+
+done
