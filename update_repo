@@ -60,6 +60,9 @@ gnome-terminal --working-directory=$DIR -e "git mergetool --tool=meld"
 
 echo 'Please press enter when you are done rebasing'
 read IN
+git checkout -b updating
+git push github updating
+
 cd ..
 
 done
