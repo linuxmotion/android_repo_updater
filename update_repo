@@ -50,8 +50,6 @@ echo 'Here are two terminals, one to continue the rebasing one to start the meld
 echo $DIR
 gnome-terminal --working-directory=$DIR
 gnome-terminal --working-directory=$DIR -e "git mergetool --tool=meld"
-exit
-exit
 
 
 echo 'Please press enter when you are done rebasing'
