@@ -5,7 +5,8 @@
 # These are the android repos that will be cloned
 # the format is
 # AREPO[URL num - 1]
-AREPO[0]=git://android.git.kernel.org/platform/frameworks/base.git
+
+# AREPO[0]=git://android.git.kernel.org/platform/packages/providers/MediaProvider.git
 AREPO[1]=git://android.git.kernel.org/platform/packages/apps/Settings.git
 AREPO[2]=git://android.git.kernel.org/platform/packages/apps/Launcher2.git
 AREPO[3]=git://android.git.kernel.org/platform/packages/apps/Phone.git
@@ -15,7 +16,8 @@ AREPO[6]=git://android.git.kernel.org/platform/system/core.git
 AREPO[7]=git://android.git.kernel.org/platform/external/dhcpcd.git
 AREPO[8]=git://android.git.kernel.org/platform/external/wpa_supplicant.git
 AREPO[9]=git://android.git.kernel.org/platform/external/wpa_supplicant_6.git
-AREPO[10]=git://android.git.kernel.org/platform/packages/providers/MediaProvider.git
+AREPO[10]=git://android.git.kernel.org/platform/frameworks/base.git
+
 #git://android.git.kernel.org/platform/dalvik.git
 #git://android.git.kernel.org/platform/bionic.git
 #git://android.git.kernel.org/platform/build.git
@@ -23,7 +25,8 @@ AREPO[10]=git://android.git.kernel.org/platform/packages/providers/MediaProvider
 # These are the github repos that will be cloned
 # the format is
 # GREPO[URL num - 1]
-GREPO[0]=git@github.com:OMFGB/android_frameworks_base.git
+
+# GREPO[0]=git@github.com:OMFGB/android_packages_providers_MediaProvider.git
 GREPO[1]=git@github.com:OMFGB/android_packages_apps_Settings.git
 GREPO[2]=git@github.com:OMFGB/android_packages_apps_Launcher2.git
 GREPO[3]=git@github.com:OMFGB/android_packages_apps_Phone.git
@@ -33,7 +36,7 @@ GREPO[6]=git@github.com:OMFGB/android_system_core.git
 GREPO[7]=git@github.com:OMFGB/android_system/external/dhcpcd.git
 GREPO[8]=git@github.com:OMFGB/android_external_wpa_supplicant.git
 GREPO[9]=git@github.com:OMFGB/android_external_wpa_supplicant_6.git
-GREPO[10]=git@github.com:OMFGB/android_packages_providers_MediaProvider.git
+GREPO[10]=git@github.com:OMFGB/android_frameworks_base.git
 #git@github.com:OMFGB/android_dalvik.git
 #git@github.com:OMFGB/android_bionic.git
 #git@github.com:OMFGB/android_build.git
@@ -45,7 +48,7 @@ read IN
 
 # the number to loop to
 # The loop number should be the same as the url number
-for I in {0..0}
+for I in {1..9}
 do
 echo 'cloning'
 git clone ${AREPO[$I]} tmp$I
