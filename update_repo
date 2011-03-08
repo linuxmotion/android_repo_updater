@@ -2,6 +2,8 @@
 
 # URlS that are commented out have been completed
 
+
+
 # These are the android repos that will be cloned
 # the format is
 # AREPO[URL num - 1]
@@ -13,10 +15,18 @@
 # AREPO[4]=git://android.git.kernel.org/platform/packages/apps/Music.git
 # AREPO[5]=git://android.git.kernel.org/platform/system/extras.git
 # AREPO[6]=git://android.git.kernel.org/platform/system/core.git
-AREPO[7]=git://android.git.kernel.org/platform/external/dhcpcd.git
+# AREPO[7]=git://android.git.kernel.org/platform/external/dhcpcd.git
 # AREPO[8]=git://android.git.kernel.org/platform/external/wpa_supplicant.git
 # AREPO[9]=git://android.git.kernel.org/platform/external/wpa_supplicant_6.git
 # AREPO[10]=git://android.git.kernel.org/platform/frameworks/base.git
+AREPO[11]=git://android.git.kernel.org/platform/hardware/libhardware
+AREPO[12]=git://android.git.kernel.org/platform/hardware/libhardware_legacy
+AREPO[13]=git://android.git.kernel.org/platform/hardware/msm7k
+AREPO[14]=git://android.git.kernel.org/platform/hardware/qcom/gps
+AREPO[15]=git://android.git.kernel.org/platform/hardware/qcom/media
+AREPO[16]=git://android.git.kernel.org/platform/hardware/ril
+AREPO[17]=git://android.git.kernel.org/platform/hardware/ti/omap3
+
 
 #git://android.git.kernel.org/platform/dalvik.git
 #git://android.git.kernel.org/platform/bionic.git
@@ -33,10 +43,17 @@ AREPO[7]=git://android.git.kernel.org/platform/external/dhcpcd.git
 # GREPO[4]=git@github.com:OMFGB/android_packages_apps_Music.git
 # GREPO[5]=git@github.com:OMFGB/android_system_extras.git
 # GREPO[6]=git@github.com:OMFGB/android_system_core.git
-GREPO[7]=git@github.com:OMFGB/android_system/external/dhcpcd.git
+# GREPO[7]=git@github.com:OMFGB/android_system/external/dhcpcd.git
 # GREPO[8]=git@github.com:OMFGB/android_external_wpa_supplicant.git
 # GREPO[9]=git@github.com:OMFGB/android_external_wpa_supplicant_6.git
 # GREPO[10]=git@github.com:OMFGB/android_frameworks_base.git
+GREPO[11]=git@github.com:OMFGB/android_hardware_libhardware
+GREPO[12]=git@github.com:OMFGB/android_hardware_libhardware_legacy
+GREPO[13]=git@github.com:OMFGB/android_hardware_msm7k
+GREPO[14]=git@github.com:OMFGB/android_hardware_qcom_gps
+GREPO[15]=git@github.com:OMFGB/android_hardware_qcom_media
+GREPO[16]=git@github.com:OMFGB/android_hardware_ril 
+GREPO[17]=git@github.com:OMFGB/android_hardware_ti_omap3
 #git@github.com:OMFGB/android_dalvik.git
 #git@github.com:OMFGB/android_bionic.git
 #git@github.com:OMFGB/android_build.git
@@ -48,7 +65,7 @@ read IN
 
 # the number to loop to
 # The loop number should be the same as the url number
-for I in {7..7}
+for I in {11..17}
 do
 echo 'cloning'
 git clone ${AREPO[$I]} tmp$I
@@ -79,14 +96,16 @@ read IN
 
 git rebase -i -m -s=ours updates
 
-echo 'Here are two terminals, one to continue the rebasing one to start the meld editor after the rebase has started'
+echo 'Here is a terminal. First start the meld editor after the rebase has started, then after melding continue the rebase'
+echo 'If the rebase cannot complete you can use the provided terminal to merge to the desired branch'
+echo 'Please close the terminal to continue'
 DIR=`pwd`
 
 gnome-terminal --working-directory=$DIR
 
 
-echo 'Please close the terminal to continue'
-echo 'and press enter when you are done rebasing'
+
+echo 'and press enter when you are done rebasing/merging'
 read IN
 git checkout -b updating
 git push github updating
