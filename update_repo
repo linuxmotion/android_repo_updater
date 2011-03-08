@@ -7,10 +7,10 @@
 # AREPO[URL num - 1]
 
 # AREPO[0]=git://android.git.kernel.org/platform/packages/providers/MediaProvider.git
-AREPO[1]=git://android.git.kernel.org/platform/packages/apps/Settings.git
-AREPO[2]=git://android.git.kernel.org/platform/packages/apps/Launcher2.git
-AREPO[3]=git://android.git.kernel.org/platform/packages/apps/Phone.git
-AREPO[4]=git://android.git.kernel.org/platform/packages/apps/Music.git
+# AREPO[1]=git://android.git.kernel.org/platform/packages/apps/Settings.git
+# AREPO[2]=git://android.git.kernel.org/platform/packages/apps/Launcher2.git
+# AREPO[3]=git://android.git.kernel.org/platform/packages/apps/Phone.git
+# AREPO[4]=git://android.git.kernel.org/platform/packages/apps/Music.git
 AREPO[5]=git://android.git.kernel.org/platform/system/extras.git
 AREPO[6]=git://android.git.kernel.org/platform/system/core.git
 AREPO[7]=git://android.git.kernel.org/platform/external/dhcpcd.git
@@ -27,10 +27,10 @@ AREPO[10]=git://android.git.kernel.org/platform/frameworks/base.git
 # GREPO[URL num - 1]
 
 # GREPO[0]=git@github.com:OMFGB/android_packages_providers_MediaProvider.git
-GREPO[1]=git@github.com:OMFGB/android_packages_apps_Settings.git
-GREPO[2]=git@github.com:OMFGB/android_packages_apps_Launcher2.git
-GREPO[3]=git@github.com:OMFGB/android_packages_apps_Phone.git
-GREPO[4]=git@github.com:OMFGB/android_packages_apps_Music.git
+# GREPO[1]=git@github.com:OMFGB/android_packages_apps_Settings.git
+# GREPO[2]=git@github.com:OMFGB/android_packages_apps_Launcher2.git
+# GREPO[3]=git@github.com:OMFGB/android_packages_apps_Phone.git
+# GREPO[4]=git@github.com:OMFGB/android_packages_apps_Music.git
 GREPO[5]=git@github.com:OMFGB/android_system_extras.git
 GREPO[6]=git@github.com:OMFGB/android_system_core.git
 GREPO[7]=git@github.com:OMFGB/android_system/external/dhcpcd.git
@@ -48,7 +48,7 @@ read IN
 
 # the number to loop to
 # The loop number should be the same as the url number
-for I in {1..9}
+for I in {5..10}
 do
 echo 'cloning'
 git clone ${AREPO[$I]} tmp$I
@@ -81,12 +81,12 @@ git rebase -i -m -s=ours updates
 
 echo 'Here are two terminals, one to continue the rebasing one to start the meld editor after the rebase has started'
 DIR=`pwd`
-echo $DIR
+
 gnome-terminal --working-directory=$DIR
-gnome-terminal --working-directory=$DIR 
 
 
-echo 'Please press enter when you are done rebasing'
+echo 'Please close the terminal to continue'
+echo 'and press enter when you are done rebasing'
 read IN
 git checkout -b updating
 git push github updating
