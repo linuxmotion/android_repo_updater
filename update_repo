@@ -16,7 +16,7 @@
 AREPO[7]=git://android.git.kernel.org/platform/external/dhcpcd.git
 # AREPO[8]=git://android.git.kernel.org/platform/external/wpa_supplicant.git
 # AREPO[9]=git://android.git.kernel.org/platform/external/wpa_supplicant_6.git
-AREPO[10]=git://android.git.kernel.org/platform/frameworks/base.git
+# AREPO[10]=git://android.git.kernel.org/platform/frameworks/base.git
 
 #git://android.git.kernel.org/platform/dalvik.git
 #git://android.git.kernel.org/platform/bionic.git
@@ -36,7 +36,7 @@ AREPO[10]=git://android.git.kernel.org/platform/frameworks/base.git
 GREPO[7]=git@github.com:OMFGB/android_system/external/dhcpcd.git
 # GREPO[8]=git@github.com:OMFGB/android_external_wpa_supplicant.git
 # GREPO[9]=git@github.com:OMFGB/android_external_wpa_supplicant_6.git
-GREPO[10]=git@github.com:OMFGB/android_frameworks_base.git
+# GREPO[10]=git@github.com:OMFGB/android_frameworks_base.git
 #git@github.com:OMFGB/android_dalvik.git
 #git@github.com:OMFGB/android_bionic.git
 #git@github.com:OMFGB/android_build.git
@@ -48,7 +48,7 @@ read IN
 
 # the number to loop to
 # The loop number should be the same as the url number
-for I in {7..10}
+for I in {7..7}
 do
 echo 'cloning'
 git clone ${AREPO[$I]} tmp$I
