@@ -41,36 +41,26 @@ read IN
 
 # the number to loop to
 # The loop number should be the same as the url number
-for I in {0..5}
+for I in {1..5}
 do
 echo 'cloning'
 git clone ${AREPO[$I]} tmp$I
 cd tmp$I
 echo 'Adding remotes '${GREPO[$I]}
-git remote add github ${GREPO[$I]} 
+git reote rename origin upstream
+git remote add origin ${GREPO[$I]} 
 git remote -v
 
 echo 'fetching remotes'
 git fetch origin gingerbread
 git fetch github
+git fetch --all
 
 echo 'Creating local branches from github'
-git checkout github/master 
-git checkout -b toupdate 
-
-echo 'Creating local branches from android.kernel.git or whatever it is'
-git checkout origin/gingerbread 
-git checkout -b updates
-
-git checkout toupdate
+git checkout github/gingerbread 
+git pull upstream gingerbread
 
 
-
-echo 'We are about to rebase please press enter to begin'
-read IN
-
-
-git rebase -i -m -s=ours updates
 
 echo 'Here is a terminal. First start the meld editor after the rebase has started, then after melding continue the rebase'
 echo 'If the rebase cannot complete you can use the provided terminal to merge to the desired branch'
@@ -83,9 +73,11 @@ gnome-terminal --working-directory=$DIR
 
 echo 'and press enter when you are done rebasing/merging'
 read IN
-git checkout -b updating
-git push github updating
 
+git push origin gingerbread
+
+echo 'Press enter when it is done pushing'
+read IN
 cd ..
 
 done
