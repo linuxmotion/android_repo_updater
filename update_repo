@@ -8,24 +8,13 @@
 # the format is
 # AREPO[URL num - 1]
 
-# AREPO[0]=git://android.git.kernel.org/platform/packages/providers/MediaProvider.git
-# AREPO[1]=git://android.git.kernel.org/platform/packages/apps/Settings.git
-# AREPO[2]=git://android.git.kernel.org/platform/packages/apps/Launcher2.git
-# AREPO[3]=git://android.git.kernel.org/platform/packages/apps/Phone.git
-# AREPO[4]=git://android.git.kernel.org/platform/packages/apps/Music.git
-# AREPO[5]=git://android.git.kernel.org/platform/system/extras.git
-# AREPO[6]=git://android.git.kernel.org/platform/system/core.git
-# AREPO[7]=git://android.git.kernel.org/platform/external/dhcpcd.git
-# AREPO[8]=git://android.git.kernel.org/platform/external/wpa_supplicant.git
-# AREPO[9]=git://android.git.kernel.org/platform/external/wpa_supplicant_6.git
-# AREPO[10]=git://android.git.kernel.org/platform/frameworks/base.git
-AREPO[11]=git://android.git.kernel.org/platform/hardware/libhardware
-AREPO[12]=git://android.git.kernel.org/platform/hardware/libhardware_legacy
-AREPO[13]=git://android.git.kernel.org/platform/hardware/msm7k
-AREPO[14]=git://android.git.kernel.org/platform/hardware/qcom/gps
-AREPO[15]=git://android.git.kernel.org/platform/hardware/qcom/media
-AREPO[16]=git://android.git.kernel.org/platform/hardware/ril
-AREPO[17]=git://android.git.kernel.org/platform/hardware/ti/omap3
+ AREPO[0]=git://android.git.kernel.org/platform/build.git
+ AREPO[1]=git://android.git.kernel.org/platform/frameworks/base.git
+ AREPO[2]=git://android.git.kernel.org/platform/hardware/qcom/gps.git
+ AREPO[3]=git://android.git.kernel.org/platform/packages/apps/Settings.git
+ AREPO[4]=git://android.git.kernel.org/platform/hardware/msm7k.git
+# AREPO[5]=git://android.git.kernel.org/platform/packages/apps/Settings.git
+# AREPO[6]=git://android.git.kernel.org/platform/packages/apps/Settings.git
 
 
 #git://android.git.kernel.org/platform/dalvik.git
@@ -36,27 +25,14 @@ AREPO[17]=git://android.git.kernel.org/platform/hardware/ti/omap3
 # the format is
 # GREPO[URL num - 1]
 
-# GREPO[0]=git@github.com:OMFGB/android_packages_providers_MediaProvider.git
-# GREPO[1]=git@github.com:OMFGB/android_packages_apps_Settings.git
-# GREPO[2]=git@github.com:OMFGB/android_packages_apps_Launcher2.git
-# GREPO[3]=git@github.com:OMFGB/android_packages_apps_Phone.git
-# GREPO[4]=git@github.com:OMFGB/android_packages_apps_Music.git
-# GREPO[5]=git@github.com:OMFGB/android_system_extras.git
-# GREPO[6]=git@github.com:OMFGB/android_system_core.git
-# GREPO[7]=git@github.com:OMFGB/android_system/external/dhcpcd.git
-# GREPO[8]=git@github.com:OMFGB/android_external_wpa_supplicant.git
-# GREPO[9]=git@github.com:OMFGB/android_external_wpa_supplicant_6.git
-# GREPO[10]=git@github.com:OMFGB/android_frameworks_base.git
-GREPO[11]=git@github.com:OMFGB/android_hardware_libhardware
-GREPO[12]=git@github.com:OMFGB/android_hardware_libhardware_legacy
-GREPO[13]=git@github.com:OMFGB/android_hardware_msm7k
-GREPO[14]=git@github.com:OMFGB/android_hardware_qcom_gps
-GREPO[15]=git@github.com:OMFGB/android_hardware_qcom_media
-GREPO[16]=git@github.com:OMFGB/android_hardware_ril 
-GREPO[17]=git@github.com:OMFGB/android_hardware_ti_omap3
-#git@github.com:OMFGB/android_dalvik.git
-#git@github.com:OMFGB/android_bionic.git
-#git@github.com:OMFGB/android_build.git
+ GREPO[0]=git@github.com:ConicalRom/platform_build.git
+ GREPO[1]=git@github.com:ConicalRom/platform_frameworks_base.git
+ GREPO[2]=git@github.com:ConicalRom/platform_hardware_qcom_gps.git
+ GREPO[3]=git@github.com:ConicalRom/platform_packages_apps_settings.git
+ GREPO[4]=git@github.com:ConicalRom/platform_hardware_msm7k.git
+# GREPO[5]=git@github.com:ConicalRom/android_device_htc_inc.git
+# GREPO[6]=git@github.com:ConicalRom/android_device_htc_inc.git
+
 
 
 
@@ -65,7 +41,7 @@ read IN
 
 # the number to loop to
 # The loop number should be the same as the url number
-for I in {11..17}
+for I in {0..5}
 do
 echo 'cloning'
 git clone ${AREPO[$I]} tmp$I
