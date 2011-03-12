@@ -41,23 +41,25 @@ read IN
 
 # the number to loop to
 # The loop number should be the same as the url number
-for I in {1..5}
+for I in {2..4}
 do
 echo 'cloning'
 git clone ${AREPO[$I]} tmp$I
 cd tmp$I
 echo 'Adding remotes '${GREPO[$I]}
-git reote rename origin upstream
+git remote rename origin upstream
 git remote add origin ${GREPO[$I]} 
 git remote -v
 
 echo 'fetching remotes'
 git fetch origin gingerbread
-git fetch github
+git fetch upstream gingerbread
 git fetch --all
 
 echo 'Creating local branches from github'
-git checkout github/gingerbread 
+git checkout origin/gingerbread 
+echo ''
+echo 'Pulling in latest upstream changes'
 git pull upstream gingerbread
 
 
@@ -73,7 +75,7 @@ gnome-terminal --working-directory=$DIR
 
 echo 'and press enter when you are done rebasing/merging'
 read IN
-
+git checkout -b gingerbread
 git push origin gingerbread
 
 echo 'Press enter when it is done pushing'
